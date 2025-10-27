@@ -7,7 +7,7 @@
 #include "shoaib_har_lstm.h"
 
 // Tensor arena size — tune down/up as needed (start 48k)
-constexpr int kTensorArenaSize = 48 * 1024;
+constexpr int kTensorArenaSize = 17 * 1024;
 alignas(16) static uint8_t tensor_arena[kTensorArenaSize];
 
 // ---- Make resolver and interpreter static/globals so they outlive setup() ----
