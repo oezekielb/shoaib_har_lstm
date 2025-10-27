@@ -135,7 +135,7 @@ void loop() {
     return;
   }
 
-  Serial.println("Running inference...");
+  // Serial.println("Running inference...");
   ulong start = micros();
   TfLiteStatus invokeStatus = tflInterpreter->Invoke();
   ulong end = micros();
@@ -143,20 +143,20 @@ void loop() {
     Serial.println("Inference failed!");
     while(1);
   }
-  Serial.print("Inference time (us): ");
+  // Serial.print("Inference time (us): ");
   Serial.println(end - start);
 
   // read outputs (if int8)
-  int out0 = tflOutputTensor->dims->data[0];
-  int out1 = tflOutputTensor->dims->data[1];
-  Serial.println("Output values:");
-  for (int i = 0; i < out1; i++) {
-    Serial.print("Class ");
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.println(tflOutputTensor->data.int8[i]);
-  }
+  // int out0 = tflOutputTensor->dims->data[0];
+  // int out1 = tflOutputTensor->dims->data[1];
+  // Serial.println("Output values:");
+  // for (int i = 0; i < out1; i++) {
+  //   Serial.print("Class ");
+  //   Serial.print(i);
+  //   Serial.print(": ");
+  //   Serial.println(tflOutputTensor->data.int8[i]);
+  // }
 
   signal_size = 0; // reset for next signal
-  delay(1000);
+  // delay(1000);
 }
