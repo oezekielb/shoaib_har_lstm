@@ -136,11 +136,15 @@ void loop() {
   }
 
   Serial.println("Running inference...");
+  ulong start = micros();
   TfLiteStatus invokeStatus = tflInterpreter->Invoke();
+  ulong end = micros();
   if (invokeStatus != kTfLiteOk) {
     Serial.println("Inference failed!");
     while(1);
   }
+  Serial.print("Inference time (us): ");
+  Serial.println(end - start);
 
   // read outputs (if int8)
   int out0 = tflOutputTensor->dims->data[0];
